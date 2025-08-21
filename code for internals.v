@@ -1,5 +1,4 @@
 module simple_cpu(input clk, input reset);
-
   // Registers
   reg [7:0] reg1, reg2;
   reg [7:0] pc;         // program counter
@@ -7,12 +6,12 @@ module simple_cpu(input clk, input reset);
   reg halt;
 
   // create the opt codes
-  parameter MOV = 4'b0001;
-  parameter ADD = 4'b0010;
-  parameter CMP = 4'b0011;
-  parameter JE  = 4'b0100;
-  parameter JNE = 4'b0101;
-  parameter HLT = 4'b0110;
+  parameter MOV=4'b0001;
+  parameter ADD=4'b0010;
+  parameter CMP=4'b0011;
+  parameter JE=4'b0100;
+  parameter JNE=4'b0101;
+  parameter HLT=4'b0110;
 
   // Instruction format
   reg [7:0] ir;         // instruction register
@@ -21,14 +20,14 @@ module simple_cpu(input clk, input reset);
 
   initial begin
     // Program
-    instr_mem[0] = {MOV, 4'b0001};   // mov reg1,3
-    instr_mem[1] = 8'd3;
-    instr_mem[2] = {MOV, 4'b0010};   // mov reg2,3
-    instr_mem[3] = 8'd3;
-    instr_mem[4] = {ADD, 4'b0001};   // add reg1, reg2
-    instr_mem[5] = {CMP, 4'b0001};   // cmp reg1,6
-    instr_mem[6] = 8'd6;
-    instr_mem[7] = {JE,  4'b0000};   // je halt
+    instr_mem[0]={MOV, 4'b0001};   // mov reg1,3
+    instr_mem[1]=8'd3;
+    instr_mem[2]={MOV, 4'b0010};   // mov reg2,3
+    instr_mem[3]=8'd3;
+    instr_mem[4]={ADD, 4'b0001};   // add reg1, reg2
+    instr_mem[5]={CMP, 4'b0001};   // cmp reg1,6
+    instr_mem[6]=8'd6;
+    instr_mem[7]={JE,  4'b0000};   // je halt
     instr_mem[8] = 8'd10;           // jump to line 10 if equal
     instr_mem[9] = {JNE, 4'b0000};   // jne add
     instr_mem[10] = 8'd0;           // jump to start
@@ -37,10 +36,10 @@ module simple_cpu(input clk, input reset);
 
   always @(posedge clk or posedge reset) begin
     if (reset) begin
-      pc <= 0;
-      halt <= 0;
-      reg1 <= 0;
-      reg2 <= 0;
+      pc <=0;
+      halt<=0;
+      reg1<=0;
+      reg2<= 0;
       zero_flag <= 0;
     end else if (!halt) begin
       ir <= instr_mem[pc];
