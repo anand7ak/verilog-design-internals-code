@@ -2,7 +2,7 @@
 
 This program basically do the following function:
 
-mov reg1, 3 → load constant 3 into reg1 
+mov reg1, 3 → load constant 3 into reg1
 
 mov reg2, 3 → load constant 3 into reg2
 
